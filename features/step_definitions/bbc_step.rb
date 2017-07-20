@@ -17,7 +17,7 @@ And(/^I enter the incorrect sign in credentials$/) do
   
 end
 
-Then(/^click sign in$/) do
+Then(/^I am not logged in$/) do
 	@bbc.find_by_id("submit-button").has_button?
 	@bbc.find_by_id("submit-button").click
 	
@@ -58,19 +58,16 @@ Then(/^I fill in the rest of the forms$/) do
   @bbc.find_by_id("postcode-input").has_field?
   @bbc.fill_in("postcode-input", :with => "SE28 8RE")
 
-  @bbc.find_by_id("gender-input").has_selector?
+  @bbc.find_by_id("gender-input").has_field?
   @bbc.find(:select, "gender-input").find(:option, 'Male').select_option
 
  #Need to find a capybara method to capture a text within a span
-
-
-
-
-
+ 	@bbc.find("span", text: "No, thanks").click
+	
 end
 
-Then(/^I click next now registered$/) do
-@bbc.find_by_id("submit-button").click
+And(/^I click next now registered$/) do
+	@bbc.find_by_id("submit-button").click
 end
 
 

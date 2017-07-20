@@ -4,7 +4,7 @@ Feature: Automating the BBC website
 		Given I am on the BBC website
 		When I click on the sign in button
 		And I enter the incorrect sign in credentials 
-		Then click sign in
+		Then I am not logged in
 		And find an error message
 
 	Scenario: I am going to register to the BBC website
