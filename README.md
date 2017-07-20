@@ -4,7 +4,7 @@
 
 - To automate the bbc website using capybara, rspec and cucumber.
 
-- Using behaviour driven development to create a user journey of a fail sign in.
+- Using behaviour driven development to create a user journey of a fail sign in and register an account.
 
 - To add assertions to each step to verify if each field exists before implementing an action.
 

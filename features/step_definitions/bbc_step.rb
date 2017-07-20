@@ -25,6 +25,53 @@ Then(/^click sign in$/) do
 end
 
 And(/^find an error message$/) do
-	@bbc.assert_text(:visible, "Sorry, we can’t find an account with that email. You can ")
-	# sleep 5
+	 puts @bbc.assert_text(:visible, "Sorry, we can’t find an account with that email. You can ")
 end
+
+When(/^I click on the register link$/) do
+  @bbc.has_link?("Register now")
+  @bbc.find_link("Register now").click  
+end
+
+And(/^I am on the enter birthday credentials$/) do
+	@bbc.find_by_id("day-input").has_field?
+	@bbc.fill_in("day-input", :with => '10')
+
+	@bbc.find_by_id("month-input").has_field?
+	@bbc.fill_in("month-input", :with => '10')
+
+	@bbc.find_by_id("year-input").has_field?
+	@bbc.fill_in("year-input", :with => '1993')
+end
+
+And(/^click next$/) do
+  @bbc.find_by_id("submit-button").click
+end
+
+Then(/^I fill in the rest of the forms$/) do
+	@bbc.find_by_id("email-input").has_field?
+	@bbc.fill_in("email-input", :with =>  "test@hotmail.com")
+
+	@bbc.find_by_id("password-input").has_field?
+	@bbc.fill_in("password-input", :with =>  "capybara001")
+
+  @bbc.find_by_id("postcode-input").has_field?
+  @bbc.fill_in("postcode-input", :with => "SE28 8RE")
+
+  @bbc.find_by_id("gender-input").has_selector?
+  @bbc.find(:select, "gender-input").find(:option, 'Male').select_option
+
+ #Need to find a capybara method to capture a text within a span
+
+
+
+
+
+end
+
+Then(/^I click next now registered$/) do
+@bbc.find_by_id("submit-button").click
+end
+
+
+
