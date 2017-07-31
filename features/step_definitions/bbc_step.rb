@@ -11,7 +11,7 @@ end
 
 And(/^I enter the incorrect sign in credentials$/) do
   @bbc.find_by_id("username-input").has_field?
-  @bbc.fill_in("username-input", :with => "ese4ver@hotmail.co.uk")
+  @bbc.fill_in("username-input", :with => "dave4ver@hotmail.co.uk")
   @bbc.find_by_id("password-input").has_field?
   @bbc.fill_in("password-input", :with => "fgduog")
   
